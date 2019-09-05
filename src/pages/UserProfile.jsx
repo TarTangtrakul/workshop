@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 
 const url = 'https://jsonplaceholder.typicode.com/users/'
@@ -7,6 +7,7 @@ export default function UserProfile(props) {
 
     const [ userId, setUserid ] = useState(props.match.params.id)
     const [ user, setUser ] = useState({});
+    //const [ test, setTest ] = useState(0);
 
     async function handleClick() {
         const res = await Axios.get(url+userId)
@@ -21,6 +22,7 @@ export default function UserProfile(props) {
             [fieldName]: value
         }
         setUser(newUser)
+        //setTest(test+1)
     }
 
     async function handleSave() {
@@ -31,11 +33,17 @@ export default function UserProfile(props) {
         // update
         //// const res = await Axios.put(url+userId, user)
         //// console.log(res)
-        
+
         //delete 
         const res = await Axios.delete(url+userId)
         console.log(res)
     }
+
+    //ไว้ก่อน รีเทิร์น แล้วให้มันเรียกใช้ฟังชันตอนโหลดหน้า
+    useEffect(()=>{
+        console.log(test)
+        handleClick()
+    },[]) // []<- ใส่แบบนี้เพื่อเรียกครั้งเดียว หรือ ถ้าใส่เพื่อเรียกเมื่อมีค่าบางค่าเปลี่ยนแปลง [test], [tset,test,testse]
 
     return <div>
         <h1 className="title">User Profile</h1>
