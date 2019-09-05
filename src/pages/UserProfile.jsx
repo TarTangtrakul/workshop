@@ -41,7 +41,7 @@ export default function UserProfile(props) {
 
     //ไว้ก่อน รีเทิร์น แล้วให้มันเรียกใช้ฟังชันตอนโหลดหน้า
     useEffect(()=>{
-        console.log(test)
+        //console.log(test)
         handleClick()
     },[]) // []<- ใส่แบบนี้เพื่อเรียกครั้งเดียว หรือ ถ้าใส่เพื่อเรียกเมื่อมีค่าบางค่าเปลี่ยนแปลง [test], [tset,test,testse]
 
