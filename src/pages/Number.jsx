@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
+import Qrcode from 'qrcode'
 
 const url = 'http://localhost:3001'
 const number = 0
@@ -7,13 +8,12 @@ const number = 0
 export default function Number() {
 
     const [ token,setToken ] = useState('')
-    const [ username,setUsername ] = useState('')
+    const [ dataUrl,setdataUrl ] = useState('')
     const [ data,setData ] = useState('')
 
     async function handleLogin(e) {
         const res = await Axios.post(url+'/login', { username: 'admin'})
         setToken(res.data.token)
-        // alert(`User `+username)
     }
 
     async function handleClick() {
@@ -25,14 +25,25 @@ export default function Number() {
         console.log(res.data)
         setData(res.data)
     }
+    
+    async function handleRegister() {
+        const res = await Axios.post(url+'/register')
+        console.log(res.data)
+        Qrcode.toDataURL(res.data.url, (err,dataUrl) => {
+            setdataUrl(dataUrl)
+        })
+    }
+
     return <div>
         <button className="button" onClick={handleLogin}>Login</button>
-        {/* <form onSubmit={handleLogin}>
-            <input className="input" name="username" defaultValue={username} type="text"/>
-            <button className="button is-primary" type="submit">Sign Up</button>
-        </form> */}
+        
+        <button className="button is-primary" onClick={handleRegister} type="submit">Sign Up</button>
         
         <pre>{ token ? "Pass":"Fail"}</pre>
+        {
+            dataUrl && <img src={dataUrl} alt="qrcode"/>
+        }
+        
         <hr/>
         <pre>{ token }</pre>
         <hr/>
