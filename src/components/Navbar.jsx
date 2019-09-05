@@ -17,6 +17,10 @@ export default function Navbar() {
                 <Link to="/contact" className="navbar-item">Contact</Link>
                 <Link to="/form" className="navbar-item">Form</Link>
                 <Link to="/user" className="navbar-item">User</Link>
+                <Link to="/numbers" className="navbar-item">Number</Link>
+            </div>
+            <div className="navbar-end">
+                <Link to="/login" className="navbar-item">Login</Link>
             </div>
         </nav>
     </div>

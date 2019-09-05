@@ -8,6 +8,7 @@ import Form from '../pages/Form'
 import User from '../pages/User'
 import UserProfile from '../pages/UserProfile'
 import Numbers from '../pages/Number'
+import Login from '../pages/Login'
 
 export default function Routes(){
     return <div>
@@ -19,6 +20,7 @@ export default function Routes(){
             <Route exact path='/user' component= {User}/>
             <Route path='/user/:id' component= {UserProfile}/>
             <Route path='/numbers' component= {Numbers}/>
+            <Route path='/login' component= {Login}/>
         </Switch>
     </div>
 }
