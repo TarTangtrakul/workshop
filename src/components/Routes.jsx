@@ -6,6 +6,7 @@ import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Form from '../pages/Form'
 import User from '../pages/User'
+import UserProfile from '../pages/UserProfile'
 
 export default function Routes(){
     return <div>
@@ -14,7 +15,8 @@ export default function Routes(){
             <Route path='/about' component= {About}/>
             <Route path='/contact' component= {Contact}/>
             <Route path='/form' component= {Form}/>
-            <Route path='/user' component= {User}/>
+            <Route exact path='/user' component= {User}/>
+            <Route path='/user/:id' component= {UserProfile}/>
         </Switch>
     </div>
 }
